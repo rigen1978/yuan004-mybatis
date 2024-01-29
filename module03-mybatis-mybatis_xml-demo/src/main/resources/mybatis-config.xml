@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!--タイプエイリアスとは、Java タイプに対する短縮名です。-->
+	<typeAliases>
+		<package name="com.yuan.pojo"/>
+	</typeAliases>
+
+	<!--
+		MyBatis では複数の環境設定を定義することができます。同じ SQL Map を複数のデータベースに対して使いたいとき役に立ちます。
+		例えば、開発環境、デモ環境、本番環境で、
+		それぞれ異なる設定場合や、本番環境の同じスキーマを持つ複数のデータベースがあり、
+		両方に対して同じ SQL Map を使いたい場合など、様々な用途が考えられます。
+	-->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<!--数据库连接信息-->
+				<property name="driver"
+				          value="com.mysql.jdbc.Driver"/>
+				<property name="url"
+				          value="jdbc:mysql:///mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+				<property name="username"
+				          value="root"/>
+				<property name="password"
+				          value="123456"/>
+			</dataSource>
+		</environment>
+
+		<environment id="test">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<!--数据库连接信息-->
+				<property name="driver"
+				          value="com.mysql.jdbc.Driver"/>
+				<property name="url"
+				          value="jdbc:mysql:///mybatis?useSSL=false"/>
+				<property name="username"
+				          value="root"/>
+				<property name="password"
+				          value="123456"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<!--sqlのmapperファイル-->
+		<!--<mapper resource="com/yuan/mapper/UserMapper.xml"/>-->
+
+		<!--Mapper マッピングする方式-->
+		<package name="com.yuan.mapper"/>
+	</mappers>
+
+
+</configuration>
