@@ -23,16 +23,20 @@ public class MybatisDemo {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		//SqlSessionFactory
+		//SqlSessionFactoryを取得
 		String resource = "mybatis-config.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
+		//sqlを実行する為に、sqlSessionを取得
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
+		//sqlを実行,selectListメソッド
 		List<User> users = sqlSession.selectList("test.selectAll");
 
 		System.out.println(users);
+
+		// 後処理（sqlSessionのクローズ）
 		sqlSession.close();
 	}
 }
