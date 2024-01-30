@@ -10,7 +10,7 @@
 <mapper namespace="com.yuan.mapper.UserMapper">
 	<!--すべてのデータを取得-->
 	<select id="selectAll"
-	        resultType="User">
+	        resultType="user">
 		<!--resultType="com.yuan.pojo.User">-->
 
 		select * from tb_user;
